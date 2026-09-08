@@ -1,0 +1,99 @@
+.btn-primary {
+    background-color: $boton-bg-primario;
+    color: $boton-color-primario ;
+    border: none;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $boton-color-primario-hover;
+        color: $boton-color-primario ;
+    }
+}
+
+.btn-secondary {
+    background-color: $boton-bg-secondary;
+    color: $boton-color-secondary ;
+    border: none;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $boton-color-secondary-hover;
+        color: $boton-color-secondary ;
+    }
+}
+
+.btn-success {
+    background-color: $boton-bg-success;
+    color: $boton-color-success ;
+    border: none;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $boton-color-success-hover;
+        color: $boton-color-success ;
+    }
+}
+
+.btn-danger {
+    background-color: $boton-bg-danger;
+    color: $boton-color-danger ;
+    border: none;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $boton-color-danger-hover;
+        color: $boton-color-danger ;
+    }
+}
+
+.btn-warning {
+    background-color: $boton-bg-warning;
+    color: $boton-color-warning ;
+    border: none;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $boton-color-warning-hover;
+        color: $boton-color-warning ;
+    }
+}
+
+.btn_reverse {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    background-color: none;
+    color: $enlace-color-hover;
+    border: 2px solid $boton-bg-primario;
+    border-radius: $borde-radial;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: $boton-color-primario-hover;
+        color: $boton-color-warning ;
+    }
+
+    .btn_reverse_icon {
+        font-size: 20px;
+        color: $boton-bg-primario;
+    }
+
+}
+
+.btn_back {
+    margin-left: 10px;
+}

@@ -1,0 +1,97 @@
+//Body
+$body-color: #000; // Letra
+$ruta-img: "../images/bg-image.png";
+
+//Tipografia
+$font-family-base: "Poppins", sans-serif;
+$font-family-title: "Poppins", sans-serif;
+
+//Textos
+//--- Titulos
+$texto-titulo-primary: #587BF9;
+$texto-titulo: #022539;
+$texto-titulo-2: #333;
+$texto-subtitulo: #aaa;
+$texto-subtitulo-2: #5f6368;
+$texto-contenido: #000;
+$texto-hover: #587BF9;
+
+//--- Tamaño
+$texto-size-titulo: 24px;
+$texto-size-subtitulo: 16px;
+$texto-size-contenido: 14px;
+$texto-size-subcontenido: 12px;
+$texto-size-botton: 16px;
+
+//Enlaces
+$enlace-color: #022539;
+$enlace-color-inactivo: #c6c6c9;
+$enlace-color-inactivo-bg: #dadada;
+$enlace-color-inactivo-2: #aaa;
+$enlace-color-hover: #587BF9;
+
+//Borders
+$borde-lineal: 1px solid #dadedf;
+$borde-radial: 5px;
+
+//Botones
+//--- Primario
+$boton-bg-primario: #587BF9;
+$boton-color-primario: #fff;
+$boton-color-primario-hover: #4561c5;
+//--- Secundario
+$boton-bg-secondary: #646C77;
+$boton-color-secondary: #fff;
+$boton-color-secondary-hover: #424953;
+//--- Exito
+$boton-bg-success: #5bae4b;
+$boton-color-success: #fff;
+$boton-color-success-hover: #3a9a4d;
+//--- Alerta
+$boton-bg-danger: #ffb520;
+$boton-color-danger: #fff;
+$boton-color-danger-hover: #e99301;
+//--- Peligro 
+$boton-bg-warning: #d94452;
+$boton-color-warning: #fff;
+$boton-color-warning-hover: #aa1a2f;
+
+//Secciones
+$seccion-bg: #fff;
+$sub-seccion-bg: #cfe2ff;
+
+//Iconos
+//--- Primario
+$icono-bg-primario: #8da8f6;
+$icono-color-primario: #587BF9;
+//--- Success
+$icono-bg-success: #cfe2ff;
+$icono-color-success: #A6C581;
+//--- Danger
+$icono-bg-danger: #beab87;
+$icono-color-danger: #e99301;
+//--- Warning
+$icono-bg-warning: #fee5e4;
+$icono-color-warning: #f67d80;
+//--- Inactivo
+$icono-color-inactivo: #c6c6c9;
+
+//Iconos de seccion
+$icono-bg-estadistica: #FFD1D4;
+$icono-color-estadistica: #FE9DA8;
+$icono-bg-finanzas: #DFEFCA;
+$icono-color-finanzas: #A6C581;
+$icono-bg-inventario: #cfe2ff;
+$icono-color-inventario: #01b9d1;
+$icono-bg-tickets: #C8CDED;
+$icono-color-tickets: #B79DE4;
+$icono-bg-tareas: #FFE2B8;
+$icono-color-tareas: #EEBA6F;
+$icono-bg-reportes: #fee5e4;
+$icono-color-reportes: #f67d80;
+
+
+
+
+// Importación de fuente externa
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');

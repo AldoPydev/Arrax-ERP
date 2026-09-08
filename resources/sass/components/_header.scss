@@ -1,0 +1,171 @@
+// Header Estilos
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    &__container {
+        width: 100%;
+        height: 5rem;
+        background-color: $seccion-bg;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 1rem;
+        border-radius: $borde-radial;
+        border-bottom: $borde-lineal;
+        transition: background-color .4s;
+
+        .perfil {
+            width: 30%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 15px;
+
+            a {
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .barra-icon {
+                font-weight: 400;
+                font-size: 23px;
+                color: $body-color;
+            }
+
+            .contenedor-perfil {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                background-color: rgba(116, 150, 248, 0.25);
+                border: 3px solid rgba(116, 150, 248, 0.8);
+                border-radius: 50%;
+            }
+
+            .perfil-icon {
+                font-size: 24px;
+                color: rgba(116, 150, 248, 0.8);
+            }
+
+            .perfil-user {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                .dropdown-toggle {
+
+                    // transición suave
+                    .dropdown__arrow {
+                        transition: transform 0.3s ease;
+                    }
+
+                    // Bootstrap abre el menú, cambia el atributo a true
+                    &[aria-expanded="true"] {
+                        .dropdown__arrow {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+
+                span {
+                    font-weight: 400;
+                    font-size: 15px;
+                    color: $body-color;
+                }
+
+                .dropdown-menu {
+                    background-color: $seccion-bg;
+                    border: $borde-lineal;
+                    border-radius: $borde-radial;
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    left: auto;
+                    opacity: 0;
+                    visibility: hidden;
+                    display: block !important;
+                    transform: translateY(60px);
+                    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+                    pointer-events: none;
+
+                    .barra-icon,
+                    span {
+                        color: $enlace-color-inactivo;
+                    }
+
+                    .dropdown-item:hover {
+                        color: $enlace-color-hover;
+                        transition: 0.4s ease;
+
+                        .barra-icon,
+                        span {
+                            color: $enlace-color-hover !important;
+                            transition: 0.4s ease;
+                        }
+                    }
+
+                    &.show {
+
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(80px) !important;
+                        pointer-events: auto;
+
+                    }
+
+
+
+                }
+            }
+        }
+
+        .img-logo {
+            width: 60px;
+            margin-right: 5px;
+        }
+
+        .idioma {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-idioma {
+            width: 25px;
+            margin-right: 5px;
+        }
+
+
+        span {
+            color: $texto-titulo-primary;
+            font-size: 25px;
+            font-weight: 500;
+        }
+    }
+
+    &__logo {
+        display: inline-flex;
+        align-items: center;
+        column-gap: .25rem;
+        text-decoration: none;
+    }
+
+    &__toggle {
+        display: block;
+        font-size: 2rem;
+        border: none;
+        color: #000;
+        background: none;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,37 @@
+//-----*** Estilos Pagina Dashboard***-----
+.panel {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  transition: padding .4s;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 15px;
+
+  .card {
+    grid-column: 1fr;
+    padding: 2rem;
+    text-align: center;
+    transition: 0.4s ease;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    a {
+      text-decoration: none;
+
+      img {
+        width: 50px;
+      }
+
+      .title-card {
+        margin-top: 20px;
+        font-size: $texto-size-subtitulo;
+        color: $texto-titulo;
+      }
+    }
+  }
+
+}

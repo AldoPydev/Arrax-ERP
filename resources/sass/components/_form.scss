@@ -1,0 +1,177 @@
+//============  BASE DE FORMULARIO
+
+
+.form_desing {
+    position: relative;
+    margin: auto;
+    margin-bottom: 50px;
+    width: 765px;
+    background-color: $seccion-bg;
+    border-radius: 12px;
+    border: 8px solid #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+
+
+    // HEADER
+    .form-header {
+        height: 10rem;
+        border-radius: $borde-radial;
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+
+        .icon-back {
+            position: absolute;
+            color: $boton-color-primario;
+            font-size: 40px;
+            margin: -70px;
+            margin-left: 10px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+
+        .bg-header {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .perfil-user {
+            position: absolute;
+            top: 5rem;
+            left: 2rem;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 100%;
+            border: 0.5rem solid #fff;
+            z-index: 3;
+        }
+
+        .logo-arrax {
+            position: absolute;
+            right: 25px;
+            width: 80px;
+            justify-content: end;
+            z-index: 2;
+        }
+
+        .text_title {
+            position: absolute;
+            color: $boton-color-primario;
+            margin-left: 30px;
+            margin-top: 20px;
+            z-index: 2;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 3px;
+                width: 35px;
+                background-color: $boton-color-primario;
+                border-radius: $borde-radial;
+            }
+        }
+
+    }
+
+    .form-body {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+
+        form {
+            padding: 20px;
+
+            .form-group {
+                margin-top: 20px;
+
+                .input-form {
+                    height: 48px;
+                    padding-inline: 14px;
+                    border-radius: $borde-radial;
+                    border: $borde-lineal;
+                    width: 100%;
+                    outline: none;
+                    background-color: transparent;
+                    font-family: $font-family-base;
+                    font-size: $texto-size-contenido;
+                    color: $body-color;
+                }
+
+                .permissions-box {
+                    margin-top: 30px 0px 30px 0px;
+                    border: $borde-lineal;
+                    border-radius: $borde-radial;
+                    padding: 10px;
+
+
+                    .checkbox-grid {
+                        display: grid;
+                        /* Crea 3 columnas de fracción igual  */
+                        grid-template-columns: repeat(3, 1fr);
+                        /* Espaciado entre elementos */
+                        row-gap: 12px;
+                        /* Espacio vertical entre filas */
+                        column-gap: 20px;
+                    }
+
+                }
+
+            }
+
+            .form-bottons {
+                display: flex;
+                justify-content: end;
+                gap: 10px;
+            }
+        }
+
+
+    }
+
+
+
+    .sub_text {
+        margin-left: 10px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            margin-left: -9px;
+            height: 25px;
+            width: 5px;
+            background-color: $icono-color-primario;
+            border-radius: $borde-radial;
+        }
+    }
+
+    .waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        z-index: 1;
+        pointer-events: none;
+
+        .wave-svg {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+    }
+
+
+}

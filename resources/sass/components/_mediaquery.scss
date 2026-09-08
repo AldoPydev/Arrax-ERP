@@ -1,0 +1,208 @@
+/*=============== BREAKPOINTS ===============*/
+// 3. MOVILES (De 767px hacia abajo)
+@media (max-width: 767px) {
+
+    /*=============== Estilos Menu ===============*/
+    .navbar {
+        .logo {
+            display: none;
+        }
+
+        .perfil {
+            width: 90%;
+            justify-content: center;
+        }
+
+        #offcanvasNavbar {
+            .offcanvas-header {
+                .logo-2 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 90%;
+
+                    .img-logo-2 {
+                        width: 50px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .container-fluid {
+            .navbar-toggler {
+                padding: 0;
+
+                .navbar-toggler-icon {
+                    font-size: 20px;
+                }
+            }
+        }
+
+    }
+
+    .navbar-nav {
+        .nav-item {
+            position: relative; // centrar indicar hover
+
+            a {
+                display: flex;
+                align-items: center;
+
+                .icon_nav {
+                    font-size: $texto-size-titulo;
+                    margin-right: 10px;
+                }
+            }
+
+            .nav-link {
+                font-family: $font-family-base;
+                font-weight: 500;
+                font-size: 1rem;
+                color: $enlace-color-inactivo;
+                position: relative;
+                transition: color 0.2s ease-in-out;
+
+            }
+
+            /* Efecto Hover y Activo en color */
+            .nav-link:hover,
+            &.active .nav-link,
+            .nav-link.active {
+                color: $enlace-color-hover !important;
+            }
+        }
+
+
+    }
+
+    /*=============== Fin Menu ===============*/
+
+}
+
+// 2. LAPTOPS Y TABLETAS (Desde 768px hasta 1023px)
+@media (min-width: 768px) and (max-width: 1000px) {
+
+    /*=============== Estilos Menu ===============*/
+    .navbar {
+        .logo {
+
+            .text-titulo {
+                display: none;
+            }
+        }
+
+        .perfil {
+            width: 70%;
+            justify-content: center;
+        }
+
+        #offcanvasNavbar {
+            .offcanvas-header {
+                .logo-2 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 90%;
+
+                    .img-logo-2 {
+                        width: 50px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .navbar-nav {
+        .nav-item {
+            position: relative; // centrar indicar hover
+
+            a {
+                display: flex;
+                align-items: center;
+
+                .icon_nav {
+                    font-size: $texto-size-titulo;
+                    margin-right: 10px;
+                }
+            }
+
+            .nav-link {
+                font-family: $font-family-base;
+                font-weight: 500;
+                font-size: 1rem;
+                color: $enlace-color-inactivo;
+                position: relative;
+                transition: color 0.2s ease-in-out;
+
+            }
+
+            /* Efecto Hover y Activo en color */
+            .nav-link:hover,
+            &.active .nav-link,
+            .nav-link.active {
+                color: $enlace-color-hover !important;
+            }
+        }
+    }
+
+    /*=============== Fn Menu ===============*/
+
+}
+
+// 1. DESKTOP (De 1024px en adelante)
+@media (min-width: 1024px) {
+
+    /*=============== Estilos Menu ===============*/
+    /*=============== Efecto Hover Menu ===============*/
+    .navbar-nav {
+        .nav-item {
+            position: relative; // centrar indicar hover
+
+            .nav-link {
+                font-family: $font-family-base;
+                font-weight: 500;
+                font-size: 0.875rem;
+                color: $enlace-color-inactivo;
+                position: relative;
+                transition: color 0.2s ease-in-out;
+
+                .icon_nav {
+                    display: none;
+                }
+            }
+
+            /* Efecto Hover y Activo en color */
+            .nav-link:hover,
+            &.active .nav-link,
+            .nav-link.active {
+                color: $enlace-color-hover !important;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%) scaleX(0);
+                bottom: -16px;
+                width: 32px;
+                height: 6px;
+                background-color: $enlace-color-hover;
+                border-radius: 6px 6px 2px 2px;
+                transition: transform 0.2s ease-in-out;
+                z-index: 10;
+            }
+
+            /* Se muestra al hacer hover O cuando el ítem tiene la clase .active */
+            &:hover::after,
+            &.active::after,
+            &:has(.active)::after {
+                transform: translateX(-50%) scaleX(1);
+            }
+        }
+    }
+
+    /*=============== Fin Menu ===============*/
+}

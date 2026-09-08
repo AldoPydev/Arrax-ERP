@@ -1,0 +1,173 @@
+.navbar {
+    background-color: $seccion-bg;
+    height: 70px;
+    margin: 20px;
+    padding: 0.5rem;
+    border: $borde-lineal;
+    border-radius: $borde-radial;
+    position: relative; // posicionamiento absoluto
+    overflow: visible !important;
+
+    .navbar-toggler {
+        border: none;
+        font-size: 1.25rem;
+
+        &:focus {
+            box-shadow: none;
+            outline: none;
+        }
+    }
+
+    .btn-close:focus {
+        box-shadow: none;
+        outline: none;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .img-logo {
+            width: 50px;
+            margin-right: 5px;
+        }
+
+        .text-titulo {
+            font-size: $texto-size-titulo;
+            color: $texto-titulo-primary;
+        }
+    }
+
+    .perfil {
+        width: 10%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 25px;
+
+        a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .barra-icon {
+            font-weight: 400;
+            font-size: 23px;
+            color: $body-color;
+        }
+
+        .contenedor-perfil {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(116, 150, 248, 0.25);
+            border: 3px solid rgba(116, 150, 248, 0.8);
+            border-radius: 50%;
+        }
+
+        .perfil-icon {
+            font-size: 24px;
+            color: rgba(116, 150, 248, 0.8);
+        }
+
+        .perfil-user {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .dropdown-toggle {
+
+                // transición suave
+                .dropdown__arrow {
+                    transition: transform 0.3s ease;
+                }
+
+                // Bootstrap abre el menú, cambia el atributo a true
+                &[aria-expanded="true"] {
+                    .dropdown__arrow {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            span {
+                font-weight: 400;
+                font-size: 15px;
+                color: $body-color;
+            }
+
+            .dropdown-menu {
+                background-color: $seccion-bg;
+                border: $borde-lineal;
+                border-radius: $borde-radial;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: auto;
+                opacity: 0;
+                visibility: hidden;
+                display: block !important;
+                transform: translateY(20px);
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+                pointer-events: none;
+
+                .btn-link {
+                    display: flex;
+                    color: $enlace-color-inactivo;
+                    gap: 3px;
+
+                    &:hover {
+                        color: $enlace-color-hover;
+                        transition: 0.4s ease;
+                    }
+                }
+
+                .barra-icon,
+                span {
+                    color: $enlace-color-inactivo;
+                }
+
+                .dropdown-item:hover {
+                    color: $enlace-color-hover;
+                    transition: 0.4s ease;
+
+                    .barra-icon,
+                    span {
+                        color: $enlace-color-hover !important;
+                        transition: 0.4s ease;
+                    }
+                }
+
+                &.show {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(20px) !important;
+                    pointer-events: auto;
+
+                }
+            }
+        }
+    }
+
+    .idioma {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-idioma {
+        width: 25px;
+        margin-right: 5px;
+    }
+
+    span {
+        color: $texto-titulo-primary;
+        font-size: 25px;
+        font-weight: 500;
+    }
+
+}

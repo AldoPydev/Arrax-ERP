@@ -1,0 +1,27 @@
+// Variables y configuraciones base
+@import 'base/variables';
+@import 'base/global';
+
+// Importar Bootstrap 
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/bootstrap";
+
+// Componentes 
+@import 'components/header2';
+@import 'components/menu';
+@import 'components/footer';
+@import 'components/tables';
+@import 'components/form';
+@import 'components/buttons';
+@import 'components/mediaquery';
+
+// Estilos de páginas
+@import 'pages/dashboard';
+@import 'pages/login';
+@import 'pages/users';
+@import 'pages/tickets';

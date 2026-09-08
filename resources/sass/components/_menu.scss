@@ -1,0 +1,254 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -120%;
+    height: 100vh;
+    width: 270px;
+    background-color: $seccion-bg;
+    border-right: $borde-lineal;
+    transition: left 0.4s ease, width 0.4s ease;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: visible;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+
+
+/* CONTENEDOR INTERNO */
+.sidebar-container {
+    width: 100%;
+    padding: 10px 0px 20px 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-nav-content {
+    width: 100%;
+}
+
+/* CABECERA DE NAVBAR */
+.sidebar .sidebar__user {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+    column-gap: 1rem;
+    padding-left: 2rem;
+}
+
+.sidebar .sidebar__user img {
+    position: relative;
+    width: 50px;
+    overflow: hidden;
+    display: grid;
+    justify-content: center;
+}
+
+
+
+/* ----------------- MENU ITEMS -----------------*/
+.sidebar-nav,
+.sidebar-nav .nav-list {
+    position: relative;
+}
+
+
+.sidebar-nav .nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    margin-top: 10px;
+}
+
+.sidebar-nav .nav-item {
+    position: relative !important;
+}
+
+.sidebar-nav .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    padding: 7px 10px;
+    border-radius: 8px;
+    color: $texto-subtitulo;
+    font-family: $font-family-base;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav .nav-item .nav-link .icon_nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 1.15rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Flecha del Dropdown */
+.sidebar-nav .nav-item .nav-link .dropdown__arrow {
+    margin-left: auto;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.sidebar-nav .dropdown-container.open .nav-link .dropdown__arrow {
+    transform: rotate(180deg);
+}
+
+.sidebar-nav .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    padding-left: 15px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.sidebar-nav .dropdown-container.open .dropdown-menu {
+    max-height: 500px;
+}
+
+
+/* ----------------- DROPDOWN STYLES -----------------*/
+.sidebar.collapsed .dropdown-menu {
+    position: absolute;
+    left: 119%;
+    top: -10px;
+    opacity: 0;
+    max-height: none !important;
+    height: auto !important;
+    overflow-y: unset;
+    background-color: $sub-seccion-bg;
+    color: $texto-subtitulo;
+    border-radius: 0 5px 5px 0;
+    padding: 7px 10px 7px 24px;
+}
+
+.dropdown-menu .nav-item .nav-link {
+    padding: 9px 15px;
+}
+
+.sidebar.collapsed .dropdown-menu .nav-link {
+    padding: 7px 15px;
+}
+
+/* Efecto Dropdown Hover */
+.sidebar.collapsed .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(10px);
+    transition: 0.4s ease;
+}
+
+/*Mostrar menu*/
+.sidebar.show-sidebar {
+    left: 0;
+    transition: left 0.4s ease;
+}
+
+.sidebar-nav .nav-link .nav-label {
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .nav-link .nav-label,
+.sidebar.collapsed .nav-item .nav-link .dropdown__arrow {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* ----------------- EFECTO HOVER -----------------*/
+.sidebar-nav .nav-item .nav-link:hover .nav-label,
+.sidebar-nav .nav-item .nav-link:hover .icon_nav,
+.sidebar-nav .nav-item .nav-link:hover .dropdown__arrow,
+.sidebar-nav .nav-item.active-link .nav-link .nav-label,
+.sidebar-nav .nav-item.active-link .nav-link .icon_nav,
+.sidebar-nav .nav-item.active-link .nav-link .dropdown__arrow,
+.sidebar-nav .nav-link.active-link .nav-label,
+.sidebar-nav .nav-link.active-link .icon_nav,
+.sidebar-nav .nav-link.active-link .dropdown__arrow {
+    color: $texto-hover !important;
+}
+
+.sidebar-nav .nav-item {
+    position: relative;
+}
+
+.sidebar-nav .nav-item::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: calc(50% - 2px);
+    transform: translateY(-50%) scaleY(0);
+    width: 4px;
+    height: 20px;
+    background-color: $texto-hover;
+    border-radius: 4px 0 0 4px;
+    transition: transform 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.sidebar-nav .nav-item:hover::after,
+.sidebar-nav .nav-item.active-link::after,
+.sidebar-nav .nav-item:has(.active-link)::after {
+    transform: translateY(-50%) scaleY(1);
+}
+
+.show-sidebar .sidebar-nav .nav-item .nav-link:hover .nav-label,
+.show-sidebar .sidebar-nav .nav-item .nav-link:hover .icon_nav,
+.show-sidebar .sidebar-nav .nav-item .nav-link:hover .dropdown__arrow,
+.show-sidebar .sidebar-nav .nav-item.active-link .nav-link .nav-label,
+.show-sidebar .sidebar-nav .nav-item.active-link .nav-link .icon_nav,
+.show-sidebar .sidebar-nav .nav-item.active-link .nav-link .dropdown__arrow,
+.show-sidebar .sidebar-nav .nav-link.active-link .nav-label,
+.show-sidebar .sidebar-nav .nav-link.active-link .icon_nav,
+.show-sidebar .sidebar-nav .nav-link.active-link .dropdown__arrow {
+    color: $texto-hover !important;
+}
+
+.show-sidebar .sidebar-nav .nav-item {
+    position: relative;
+}
+
+.show-sidebar .sidebar-nav .nav-item::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: calc(50% - 2px);
+    transform: translateY(-50%) scaleY(0);
+    width: 4px;
+    height: 20px;
+    background-color: $texto-hover;
+    border-radius: 4px 0 0 4px;
+    transition: transform 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.show-sidebar .sidebar-nav .nav-item:hover::after,
+.show-sidebar .sidebar-nav .nav-item.active-link::after,
+.show-sidebar .sidebar-nav .nav-item:has(.active-link)::after {
+    transform: translateY(-50%) scaleY(1);
+}
+
+/* -----------------LINK ACTIVO -----------------*/
+
+.active-link {
+    color: $texto-hover;
+}
