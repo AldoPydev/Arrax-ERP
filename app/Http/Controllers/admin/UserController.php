@@ -102,17 +102,29 @@ class UserController extends Controller
         //====== REGLA DE VALIDACION AL ACTUALIZAR
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'correo' => ['required', 'string', 'email', 'max:255'],
+            'telefono' => ['required', 'integer', 'digits:10'],
+            'profesion' => ['required', 'string', 'max:255'],
+            'empleado' => ['required', 'integer', 'unique:users,empleado'],
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, 
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
+        //====== EMAIL EN MINUSCULAS
+        $data['correo'] = strtolower($data['correo']);
+        $data['email'] = strtolower($data['email']);
+
 
         //====== ENVIAR LOS DATOS
         $user->name = $data['name'];
+        $user->correo = $data['correo'];
+        $user->telefono = $data['telefono'];
+        $user->profesion = $data['profesion'];
+        $user->empleado = $data['empleado'];
         $user->email = $data['email'];
 
-        //====== EMAIL EN MINUSCULAS
-        $data['email'] = strtolower($data['email']);
+
+        
 
         //====== VERIFICAR SI INTRODUCE UN NUEVO PASSWORD
         // Y ENVIARLO ENCRIPTADO
