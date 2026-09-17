@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+//======= IMPORTAR MODELO USER
+use App\Models\User;
+
+
+
 class dashboard extends Controller
 {
     //========= Autenticación
@@ -14,8 +20,10 @@ class dashboard extends Controller
     
 
     //========= Vista Dashboard
-    public function index()
+    public function index(Request $request)
     {
-        return view("dashboard.home");
+        $users = User::all();
+
+        return view("dashboard.home", compact("users"));
     }
 }

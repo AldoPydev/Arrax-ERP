@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 
 use Spatie\Permission\Traits\HasRoles;
 
-#[Fillable(['name', 'correo', 'telefono', 'profesion', 'empleado', 'email', 'password'])]
+#[Fillable(['name', 'correo', 'telefono', 'profesion', 'empleado', 'status', 'email', 'password', 'departamento_id'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -30,5 +30,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // FUNCIÓN RELACIÓN CON TABLA DEPARTAMENTOS
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
     }
 }

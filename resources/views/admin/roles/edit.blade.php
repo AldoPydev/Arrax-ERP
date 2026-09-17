@@ -12,14 +12,14 @@
                             <a href="{{ route('admin.roles.index') }}">
                                 <iconify-icon class="icon-back" icon="solar:round-alt-arrow-left-bold"></iconify-icon>
                             </a>
-                            <!-- FOTO DE PERFIL -->
+                            <!-- HEADER FORMULARIO -->
                             <img class="bg-header" src="{{ asset('images/form-bg.jpg') }}" alt="">
                             <img class="logo-arrax" src="{{ asset('images/logo6.png') }}" alt="">
                             <span class="text_title">Editar rol de usuario</span>
                         </div>
                     </div>
 
-                    <!-- ALERTA DE ERROR  -->
+                    <!-- AGRUPA Y MUESTRA ALERTA DE ERROR  -->
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert-message">
                             <h6>Corregir el siguiente error</h6>
@@ -64,7 +64,7 @@
                                                     <input class="opcion" type="checkbox" name="permissions[]"
                                                         value="{{ $permission->id }}" @checked(in_array($permission->id, old('permissions', $role->permissions->pluck('id')->toArray())))>
                                                     <!-- @ checked -> recupera los check previo seleccionados despues de un error
-                                                                                pluck -> por medio de un array recupera el ID de los permisos del rol-->
+                                                        pluck -> por medio de un array recupera el ID de los permisos del rol-->
                                                     <span>{{ $permission->name }}</span>
                                                 </li>
                                             @endforeach

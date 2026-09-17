@@ -14,14 +14,14 @@
                             <a href="{{ route('admin.roles.index') }}">
                                 <iconify-icon class="icon-back" icon="solar:round-alt-arrow-left-bold"></iconify-icon>
                             </a>
-                            <!-- FOTO DE PERFIL -->
+                            <!-- HEADER FORMULARIO -->
                             <img class="bg-header" src="{{ asset('images/form-bg.jpg') }}" alt="">
                             <img class="logo-arrax" src="{{ asset('images/logo6.png') }}" alt="">
                             <span class="text_title">Nuevo rol de usuario</span>
                         </div>
                     </div>
 
-                    <!-- ALERTA DE ERROR  -->
+                    <!--AGRUPAR ALERTA DE ERROR  -->
                     @if ($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert-message">
                             <h6>Corregir el siguiente error</h6>
@@ -34,6 +34,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+
 
                     <!-- CUERPO FORM  -->
                     <div class="form-body">
@@ -77,9 +78,6 @@
                                 <button type="submit" class="btn btn-primary mr-2">Crear</button>
                                 <a href="{{ route('admin.roles.index') }}" class="btn btn-warning"> Cancelar</a>
                             </div>
-
-
-
 
                         </form>
                     </div>

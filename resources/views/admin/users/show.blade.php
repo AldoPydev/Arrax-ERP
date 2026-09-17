@@ -12,7 +12,7 @@
                             <a href="{{ route('admin.users.index') }}">
                                 <iconify-icon class="icon-back" icon="solar:round-alt-arrow-left-bold"></iconify-icon>
                             </a>
-                            <!-- FOTO DE PERFIL -->
+                            <!-- HEADER DEL FORMULARIO -->
                             <img class="bg-header" src="{{ asset('images/form-bg.jpg') }}" alt="">
                             <img class="perfil-user" src="{{ asset('images/user3.png') }}" alt="">
                             <img class="logo-arrax" src="{{ asset('images/logo6.png') }}" alt="">
@@ -48,7 +48,7 @@
                                 </div>
 
 
-                                <!-- DATOS PERSONALES  -->
+                                <!-- DATOS LABORALES  -->
                                 <div class="datos_laborales">
                                     <h1 class="text_title text_title_user">Datos Laborales</h1>
                                     <div class="dato">
@@ -65,7 +65,12 @@
                                     <div class="dato">
                                         <iconify-icon class="icon_user" icon="solar:buildings-bold"></iconify-icon>
                                         <span class="text_subtitle">Departamento: </span>
-                                        <span class="text_content">Tics</span>
+
+
+                                        <!-- MOSTRAR DEPTO RELACIOANDO AL USUARIO DE LA TABLA DEPTO -->
+                                        <span
+                                            class="text_content">{{ $user->departamento->name ?? 'Sin departamento' }}</span>
+
                                     </div>
                                     <div class="dato">
                                         <iconify-icon class="icon_user" icon="solar:letter-bold"></iconify-icon>
@@ -78,6 +83,16 @@
 
                                         <!-- MOSTRAR ROL DE USUARIO / DE NO EXISTIR MOSTRAR "Sin rol"  -->
                                         <span class="text_content">{{ $user->getRoleNames()->implode(', ') ?: 'Sin rol' }}
+                                        </span>
+
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user"
+                                            icon="solar:settings-minimalistic-bold-duotone"></iconify-icon>
+                                        <span class="text_subtitle">Estatus: </span>
+
+                                        <!-- MOSTRAR STATUS DE USUARIO / DE NO EXISTIR MOSTRAR "Sin rol"  -->
+                                        <span class="text_content">{{ $user->status ?: 'Sin dato' }}</span>
                                         </span>
 
                                     </div>
@@ -103,7 +118,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

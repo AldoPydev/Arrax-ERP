@@ -7,17 +7,11 @@
     <div class="user_container">
         <div class="row">
             <div class="col">
-                <!-- MENSAJES DE ACCIONES CREADO -->
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
 
                 <h2 class="text_title">Roles de usuarios</h2>
                 <div class="mt-3 d-flex g-3">
 
-                    <!-- BOTON DE CREAR NUEVO ROL -->
+                    <!-- BOTON NUEVO ROL -->
                     <button type="button" class="btn btn-primary">
                         <a href="{{ route('admin.roles.create') }}">Nuevo Rol</a>
                     </button>
@@ -25,6 +19,7 @@
                     <a class="btn btn-primary btn_back" href="{{ route('admin.users.index') }}">
                         <i class="bi bi-arrow-bar-left"></i>
                     </a>
+
 
                 </div>
                 <hr>
@@ -49,32 +44,32 @@
                                     <!-- ACCIONES VER / EDITAR / ELIMINAR -->
                                     <div class="acciones-tabla" class="d-flex justify-content-center gap-2">
 
-                                        <!-- VER USUARIO -->
+                                        <!-- VER ROL-->
                                         <a href="{{ route('admin.roles.show', $role->id) }}">
                                             <iconify-icon class="accion_icon" icon="solar:eye-linear"></iconify-icon>
                                         </a>
 
-                                        <!-- EDITAR USUARIO -->
+                                        <!-- EDITAR ROL-->
                                         <a href="{{ route('admin.roles.edit', $role->id) }}">
                                             <iconify-icon class="accion_icon" icon="solar:pen-linear"></iconify-icon>
                                         </a>
 
                                         <!-- MODAL CON ID DEL ROL -->
                                         <a href="#" data-bs-toggle="modal"
-                                            data-bs-target="#modalEliminar{{ $role }}">
+                                            data-bs-target="#modalEliminar{{ $role->id }}">
                                             <iconify-icon class="accion_icon accion_delete"
                                                 icon="solar:trash-bin-2-linear"></iconify-icon>
                                         </a>
 
                                         <!-- MODAL DE CONFORMACIÓN -->
-                                        <div class="modal fade" id="modalEliminar{{ $role }}" tabindex="-1"
-                                            aria-labelledby="modalEliminarLabel{{ $role }}" aria-hidden="true">
+                                        <div class="modal fade" id="modalEliminar{{ $role->id }}" tabindex="-1"
+                                            aria-labelledby="modalEliminarLabel{{ $role->id }}" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
 
                                                     <!-- HEADER MODAL -->
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalEliminarLabel{{ $role }}">
+                                                        <h5 class="modal-title" id="modalEliminarLabel{{ $role->id }}">
                                                             Confirmar Eliminación</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -82,7 +77,7 @@
 
                                                     <!-- MODAL -->
                                                     <div class="modal-body text-start">
-                                                        ¿Seguro que deseas eliminar este elemento? Esta acción no se
+                                                        ¿Seguro que deseas eliminar? Esta acción no se
                                                         puede
                                                         deshacer.
                                                     </div>
@@ -93,7 +88,7 @@
                                                             data-bs-dismiss="modal">Cancelar</button>
 
                                                         <!-- ELIMIANR ROL -->
-                                                        <form action="{{ route('admin.roles.destroy', $role) }}"
+                                                        <form action="{{ route('admin.roles.destroy', $role->id) }}"
                                                             method="post" class="d-inline">
                                                             @csrf
                                                             @method('delete')

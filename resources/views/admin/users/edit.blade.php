@@ -96,6 +96,7 @@
 
                             </div>
 
+                            <!-- CONTRASEÑA Y CONFIRMAR -->
                             <div class="user_content mb-3">
 
                                 <div class="user_item">
@@ -112,37 +113,93 @@
 
                             </div>
 
-                            <!-- Sección de Permisos -->
-                            <div class="form-group">
-                                <label for="name" class="text_subtitle sub_text">Rol de usuario *</label>
-                                <br>
-                                <span class="form-indicacion" style="font-size: 10px">Seleccionar al menos un rol</span>
-                                <div class="permissions-box mt-4 mb-4">
-                                    <input type="checkbox" id="seleccionar-todos">
-                                    <label for="selectAll" class="checkbox-label mb-4">Todos</label>
+                            <!--DEPTO DE USUARIO -->
+                            <div class="user_content mb-3 justify-content-start" style="margin-left: 30px;">
+                                <div class="user_item select_dept">
+                                    <label for="departamento_id" class="form-label">Departamento *</label>
+                                    <select class="form-control" name="departamento_id" id="departamento_id"
+                                        style="width:45%" required>
+                                        <option value="" disabled selected>Seleccionar...</option>
 
-                                    <!-- Mostrar Permisos -->
-                                    <div>
-                                        <ul class="checkbox-grid">
-                                            @foreach ($roles as $role)
-                                                <li>
-                                                    <input type="checkbox" name="roles[]" value="{{ $role->id }}"
-                                                        @checked(in_array($role->id, old('roles', $user->roles->pluck('id')->toArray())))>
-                                                    <!-- @ checked recupera los check previo seleccionados despues de un error  -->
-                                                    <span>{{ $role->name }}</span>
-                                                    <!-- Nombre del permiso  -->
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                                        @foreach ($departamentos as $departamento)
+                                            <option value="{{ $departamento->id }}"
+                                                {{ old('departamento_id', $user->departamento_id) == $departamento->id ? 'selecciona' : '' }}>
+                                                {{ $departamento->name }}
+                                            </option>
+                                        @endforeach
+
+                                    </select>
+
+                                    <!-- Mostrar mensaje de error de validación si existe -->
+                                    @error('departamento_id')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+
+                                    <span class="form-indicacion">Selecciona un departamento o area</span>
                                 </div>
                             </div>
 
-                            <!-- BOTONES -->
-                            <div class="form-bottons">
-                                <button type="submit" class="btn btn-primary">Actualizar</button>
-                                <a href="{{ route('admin.users.index') }}" class="btn btn-warning "> Cancelar</a>
-                            </div>
+                            <!-- ESTATUS DE USUARIO -->
+                            <div class="form-group">
+                                <label for="name" class="text_subtitle sub_text">Estatus de usuario *</label>
+                                <br>
+                                <span class="form-indicacion" style="font-size: 10px">Se debe seleccionar un estado</span>
+                                <div class="permissions-box mt-4 mb-4">
+
+                                    <!-- Mostrar Status -->
+                                    <div class="status_user d-flex justify-content-evenly">
+                                        <label>
+                                            <input type="radio" name="status" value="Activo"
+                                                @checked($user->status === 'Activo')>
+                                            Activo
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="status" value="Inactivo"
+                                                @checked($user->status === 'Inactivo')>
+                                            Inactivo
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" value="Baja"
+                                                @checked($user->status === 'Baja')>
+                                            Baja
+                                        </label>
+                                        <div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Sección de Permisos -->
+                                <div class="form-group">
+                                    <label for="name" class="text_subtitle sub_text">Rol de usuario *</label>
+                                    <br>
+                                    <span class="form-indicacion" style="font-size: 10px">Se debe seleccionar un
+                                        rol</span>
+                                    <div class="permissions-box mt-4 mb-4">
+
+                                        <!-- Mostrar Permisos -->
+                                        <div>
+                                            <ul class="checkbox-grid">
+                                                @foreach ($roles as $role)
+                                                    <li>
+                                                        <input type="checkbox" name="roles[]"
+                                                            value="{{ $role->id }}" @checked(in_array($role->id, old('roles', $user->roles->pluck('id')->toArray())))>
+                                                        <!-- @ checked recupera los check previo seleccionados despues de un error  -->
+                                                        <span>{{ $role->name }}</span>
+                                                        <!-- Nombre del permiso  -->
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BOTONES -->
+                                <div class="form-bottons">
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                    <a href="{{ route('admin.users.index') }}" class="btn btn-warning "> Cancelar</a>
+                                </div>
 
                         </form>
                     </div>

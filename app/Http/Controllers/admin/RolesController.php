@@ -16,10 +16,7 @@ class RolesController extends Controller
     
     public function index()
     {
-        
-       
-
-        $roles = Role::oldest('id')->paginate(3);
+        $roles = Role::oldest('id')->paginate(10);
 
         //======= RETORNAR VISTA INDEX CON DATOS DE USUARIOS
         return view('admin.roles.index', compact("roles"));
@@ -128,7 +125,7 @@ class RolesController extends Controller
         //======== ELIMINAR ROL
         $role->delete();
 
-        //======== CONFIRMAR ELIMINACIÓN Y REDIRECCIONAR A INDEX
-        return redirect()->route('admin.users.index')->with('success', 'Rol eliminado');
+        //======== CONFIRMAR ELIMINACIÓN Y REDIRECCIONAR A INDEX DE ROLES
+        return redirect()->route('admin.roles.index')->with('success', 'Rol eliminado');
     }
 }

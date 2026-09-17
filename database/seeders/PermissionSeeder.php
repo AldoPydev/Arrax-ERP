@@ -18,22 +18,19 @@ class PermissionSeeder extends Seeder
         //======== DIFINOR PERMISOS
 
         $permissions = [
-            'acceso usuarios',
-            'acceso gerencia',
-            'acceso proyectos',
-            'acceso roles',
-            'acceso crear',
-            'acceso ver',
-            'acceso editar',
-            'acceso actualizar',
-            'acceso eliminar'
+            'Crear',
+            'Ver',
+            'Editar',
+            'Eliminar'
         ];
 
         //======== CREAR PERMISOS EN BD
 
         foreach( $permissions as $permission){
 
-            Permission::create([
+
+            //======== firstOrCreate - verifica si ya existe y actualiza 
+            Permission::firstOrCreate([
 
                 'name' => $permission
                 

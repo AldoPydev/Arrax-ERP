@@ -90,6 +90,13 @@
         form {
             padding: 20px;
 
+            .user_content {
+                .select_dept {
+                    width: 100%;
+                }
+
+            }
+
             .form-group {
                 margin-top: 20px;
 
@@ -128,6 +135,8 @@
             }
 
             .form-bottons {
+                position: relative;
+                z-index: 3;
                 display: flex;
                 justify-content: end;
                 gap: 10px;

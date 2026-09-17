@@ -10,7 +10,7 @@
                 <h2 class="text_title">Lista de usuarios</h2>
                 <div class="search_box mt-3">
 
-                    <!-- BOTON DE CREAR NUEVO USUARIO -->
+                    <!-- BOTON NUEVO USUARIO -->
                     <div class="boton_header">
                         <button type="button" class="btn btn-primary">
                             <a href="{{ route('admin.users.create') }}">Nuevo usuario</a>
@@ -26,10 +26,17 @@
 
 
                     <!-- BUSCADOR -->
-                    <form class="d-flex" role="search">
-                        <input class="buscador_box form-control me-2" type="search" placeholder="Buscar..."
-                            aria-label="Search" />
+                    <form class="d-flex gap-2" action="{{ route('admin.users.index') }}" method="GET" role="search"
+                        name="buscar">
+                        <input class="buscador_box form-control me-2" name ="buscar" type="search" placeholder="Buscar..."
+                            value="{{ $_REQUEST['buscar'] ?? '' }}" aria-label="Search" id="input-buscar" />
                         <button class="btn btn-primary" type="submit">Buscar</button>
+
+                        <!-- LIMPIAR BUSQUEDA -->
+                        @if ($buscar)
+                            <a class="btn btn-success align-content-center"
+                                href="{{ route('admin.users.index') }}">Limpiar</a>
+                        @endif
                     </form>
                 </div>
 
@@ -38,30 +45,49 @@
                 <br>
 
                 <!-- TABLA USUARIOS -->
-                <table class="table  table-hover align-middle mt-3">
+                <table class="table  table-hover align-middle mt-3" id="contenedor-tabla">
                     <thead class="table-dark">
                         <tr>
                             <!-- HEADER DE TABLA -->
-                            <th scope="col" class="text-center" style="width: 10%">N. Empleado</th>
-                            <th scope="col" class="text-start">Nombre</th>
-                            <th scope="col" class="text-start">Correo</th>
-                            <th scope="col" class="text-start">Departamento</th>
-                            <th scope="col" class="text-start" style="width: 10%">Rol</th>
-                            <th scope="col" class="text-center">Acciones</th>
+                            <th scope="col" class="text-center" style="width: 7%">N. Empleado</th>
+                            <th scope="col" class="text-center">Nombre</th>
+                            <th scope="col" class="text-center">Correo</th>
+                            <th scope="col" class="text-center">Departamento</th>
+                            <th scope="col" class="text-center" style="width: 13%">Rol</th>
+                            <th scope="col" class="text-center" style="width: 10%">Estado</th>
+                            <th scope="col" class="text-center" style="width: 10%">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+
+
                         <!-- RECORRER LOS USUARIOS Y MOSTRAR -->
-                        @foreach ($users as $user)
+                        @forelse ($users as $user)
                             <tr>
                                 <td class="text-center">{{ $user->empleado }}</td>
                                 <td class="text-start">{{ $user->name }}</td>
                                 <td class="text-start">{{ $user->email }}</td>
-                                <td class="text-start">Mantenimiento</td>
+                                <td class="text-start">{{ $user->departamento->name ?? 'Sin departamento' }}</td>
 
                                 <!-- MOSTRAR ROL DE USUARIO -->
                                 <td class="text-start">
                                     {{ $user->getRoleNames()->implode(', ') ?: 'Sin rol' }}
+                                </td>
+
+                                <!-- MOSTRAR STATUS DEL USUARIO -->
+                                @php
+                                    // SE ASIGANA UN COLOR POR STATUS
+                                    $statusColor = match (strtolower($user->status)) {
+                                        'activo' => 'status-activo',
+                                        'inactivo' => 'status-inactivo',
+                                        'baja' => 'status-baja',
+                                        default => 'text-secondary', // Color por defecto
+                                    };
+                                @endphp
+
+                                <td class="text-start status {{ $statusColor }}">
+                                    <i class="bi bi-circle-fill" style="font-size: 10px"></i>
+                                    <span class="status">{{ $user->status }}</span>
                                 </td>
 
 
@@ -79,6 +105,8 @@
                                             <iconify-icon class="accion_icon" icon="solar:pen-linear"></iconify-icon>
                                         </a>
 
+
+                                        <!-- ELIMIANR USUARIO -->
                                         <!-- MODAL CON ID DEL UCUARIO -->
                                         <a href="#" data-bs-toggle="modal"
                                             data-bs-target="#modalEliminar{{ $user->id }}">
@@ -102,7 +130,7 @@
 
                                                     <!-- MODAL -->
                                                     <div class="modal-body text-start">
-                                                        ¿Seguro que deseas eliminar este elemento? Esta acción no se
+                                                        ¿Seguro que deseas eliminar al usario? Esta acción no se
                                                         puede
                                                         deshacer.
                                                     </div>
@@ -126,12 +154,21 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+
+                            <!-- BUSQUEDA SIN RESULTADOS -->
+                        @empty
+                            <tr>
+                                <td colspan="3">No se encontraron resultados.</td>
+                            </tr>
+                        @endforelse
+
+
                     </tbody>
                 </table>
             </div>
             <!-- Paginación -->
             {{ $users->links() }}
+
         </div>
     </div>
 @endsection

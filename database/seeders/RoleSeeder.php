@@ -21,35 +21,34 @@ class RoleSeeder extends Seeder
 
     $roles = [
 
-            'admin' => [
-            'acceso usuarios',
-            'acceso gerencia',
-            'acceso proyectos',
-            'acceso roles',
-            'acceso crear',
-            'acceso ver',
-            'acceso editar',
-            'acceso actualizar',
-            'acceso eliminar'
+            'Administrador' => [
+            'Crear',
+            'Ver',
+            'Editar',
+            'Eliminar'
         ],
 
-            'auxiliar' => [
-            'acceso crear',
-            'acceso ver',
-            'acceso editar',
-            'acceso actualizar',
-            'acceso eliminar'
+            
+        'Encargado' => [
+            'Crear',
+            'Ver',
+            'Editar',
         ],
 
-            'practicante' => [
-            'acceso crear',
-            'acceso ver',
-            'acceso editar',
-            'acceso actualizar'
+        'Auxiliar' => [
+            'Crear',
+            'Ver',
+            'Editar',
+        ],
+
+            'Practicante' => [
+            'Crear',
+            'Ver',
+            'Editar',
         ],
         
-            'invitado' => [
-            'acceso ver',
+            'Invitado' => [
+            'Ver',
 
         ]
     ];

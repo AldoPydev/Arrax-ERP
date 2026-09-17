@@ -113,8 +113,9 @@
 
                             </div>
 
-                            <div class="user_content mb-3">
+                            <!-- CONTRASEÑA Y CONFIRMAR -->
 
+                            <div class="user_content mb-3">
                                 <div class="user_item">
                                     <label for="password">Contraseña *</label>
                                     <input id="password" type="password"
@@ -128,8 +129,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-
-
                                 </div>
 
                                 <div class="user_item">
@@ -140,22 +139,63 @@
 
                             </div>
 
+                            <!--DEPTO DE USUARIO -->
+                            <div class="user_content mb-3 justify-content-start" style="margin-left: 30px;">
+                                <div class="user_item select_dept">
+                                    <label for="departamento_id" class="form-label">Departamento *</label>
+                                    <select class="form-control" name="departamento_id" id="departamento_id"
+                                        style="width:45%" required>
+                                        <option value="" disabled selected>Seleccionar...</option>
+
+                                        @foreach ($departamentos as $departamento)
+                                            <option value="{{ $departamento->id }}">
+                                                {{ $departamento->name }}
+                                            </option>
+                                        @endforeach
+
+                                    </select>
+
+                                    <!-- Mostrar mensaje de error de validación si existe -->
+                                    @error('departamento_id')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+
+                                    <span class="form-indicacion">Selecciona un departamento o area</span>
+                                </div>
+                            </div>
+
+                            <!-- ESTATUS DE USUARIO -->
+                            <div class="form-group">
+                                <label for="name" class="text_subtitle sub_text">Estatus de usuario *</label>
+                                <br>
+                                <span class="form-indicacion" style="font-size: 10px">Se debe seleccionar un estado</span>
+                                <div class="permissions-box mt-4 mb-4">
+
+                                    <!-- Mostrar Status -->
+                                    <div>
+                                        <input type="checkbox" id="mi-checkbox" name="status" value="Activo" checked
+                                            required>
+                                        <label for="mi-checkbox">Activo</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
                             <!-- Sección de Permisos -->
                             <div class="form-group">
                                 <label for="name" class="text_subtitle sub_text">Rol de usuario *</label>
                                 <br>
-                                <span class="form-indicacion" style="font-size: 10px">Seleccionar al menos un rol</span>
+                                <span class="form-indicacion" style="font-size: 10px">Se debe seleccionar un rol</span>
                                 <div class="permissions-box mt-4 mb-4">
-                                    <input type="checkbox" id="seleccionar-todos">
-                                    <label for="selectAll" class="checkbox-label mb-4">Todos</label>
 
                                     <!-- Mostrar Permisos -->
                                     <div>
                                         <ul class="checkbox-grid">
                                             @foreach ($roles as $role)
                                                 <li>
-                                                    <input class="opcion" type="checkbox" name="roles[]"
-                                                        value="{{ $role->id }}" @checked(in_array($role->id, old('roles', [])))>
+                                                    <input type="checkbox" name="roles[]" value="{{ $role->id }}"
+                                                        @checked(in_array($role->id, old('roles', [])))>
                                                     <!-- @ checked recupera los check previo seleccionados despues de un error  -->
                                                     <span>{{ $role->name }}</span>
                                                     <!-- Nombre del permiso  -->
@@ -166,8 +206,6 @@
 
                                 </div>
                             </div>
-
-
 
                             <!-- Botones -->
                             <div class="form-bottons">
