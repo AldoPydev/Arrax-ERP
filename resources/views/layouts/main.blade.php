@@ -100,12 +100,11 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
                         <li>
 
-                            <a class="dropdown-item" href="{{ route('admin.users.show', Auth::user()->id) }}">
+
+                            <a class="dropdown-item" href="{{ route('perfil.show', Auth::user()->id) }}">
                                 <iconify-icon class="barra-icon" icon="solar:user-bold"></iconify-icon>
                                 <span>Mi Perfil</span>
                             </a>
-
-
 
                         </li>
                         <li>

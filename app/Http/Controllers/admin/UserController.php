@@ -8,12 +8,15 @@ use Illuminate\Http\Request;
 //======= IMPORTAR MODELO DEPARTAMENTO
 use App\Models\Departamento;
 
-
 //======= IMPORTAR MODELO USER
 use App\Models\User;
 
 //======= IMPORTAR MODELO ROLES DE Spatie permissions
 use Spatie\Permission\Models\Role;
+
+//======= IMPORTAR REGLAS DE VALIDACIÓN FORM UPDATE ADMIN 
+use App\Http\Requests\UpdateAdmin;
+
 
 class UserController extends Controller
 {
@@ -72,7 +75,7 @@ class UserController extends Controller
             'departamento_id' => ['required', 'exists:departamentos,id'],
         ]);
 
-       //======= SI EL REGISTRO NO EXISTE
+        //======= SI EL REGISTRO NO EXISTE
         
         //====== ENCRIPTAR CONTRASEÑA
         $data['password'] = bcrypt($data['password']);
@@ -81,7 +84,7 @@ class UserController extends Controller
         $data['correo'] = strtolower($data['correo']);
         $data['email'] = strtolower($data['email']);
         
-    //====== CRAER USUARIO
+        //====== CRAER USUARIO
         $user = User::create($data);
         
          //====== GUARDAR EL DEPARTAMENTO
@@ -119,20 +122,11 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, User $user)
+    public function update(UpdateAdmin $request, User $user)
     {
-        //====== REGLA DE VALIDACION AL ACTUALIZAR
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'correo' => ['required', 'string', 'email', 'max:255'],
-            'telefono' => ['required', 'integer', 'digits:10'],
-            'profesion' => ['required', 'string', 'max:255'],
-            'empleado' => ['required', 'integer', 'unique:users,empleado,' . $user->id],
-            'status' => ['required', 'string', 'max:255'],
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id, 
-            'password' => 'nullable|string|min:8|confirmed',
-            'departamento_id' => 'required|exists:departamentos,id',
-        ]);
+
+        //====== REQUESTS DE VALIDACION 
+        $data = $request->validated();
 
         //====== EMAIL EN MINUSCULAS
         $data['correo'] = strtolower($data['correo']);
@@ -152,9 +146,7 @@ class UserController extends Controller
             $user->departamento_id = $data['departamento_id'];
         
 
-        //====== VERIFICAR SI INTRODUCE UN NUEVO PASSWORD
-        // Y ENVIARLO ENCRIPTADO
-
+        //====== VERIFICAR SI INTRODUCE UN NUEVO PASSWORD / ENCRIPTAR
         if(isset($data['password'])){
 
             $user->password = bcrypt($data['password']);
@@ -166,6 +158,7 @@ class UserController extends Controller
         //====== GUARDAR CAMBIOS
         $user->save();
 
+        
         //======== CONFIRMAR EDICIÓN Y REDIRECCIONAR A EDIT
         return redirect()->route('admin.users.edit', $user)->with('success', 'Usuario Actualizado');
     }

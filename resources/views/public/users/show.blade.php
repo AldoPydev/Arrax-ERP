@@ -9,7 +9,7 @@
                     <!-- CABECERA  -->
                     <div>
                         <div class="form-header">
-                            <a href="{{ route('dashboard.home') }}">
+                            <a href="{{ route('dashboard.index') }}">
                                 <iconify-icon class="icon-back" icon="solar:round-alt-arrow-left-bold"></iconify-icon>
                             </a>
                             <!-- FOTO DE PERFIL -->
@@ -24,9 +24,84 @@
                     <div class="form-body">
                         <form action="">
 
+                            <div class="user_datos">
 
 
+                                <!-- DATOS PERSONALES  -->
+                                <div class="datos_personales">
+                                    <h1 class="text_title text_title_user">{{ Auth::user()->name }}</h1>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:user-rounded-bold"></iconify-icon>
+                                        <span class="text_subtitle">{{ Auth::user()->profesion ?: 'Sin dato' }}</span>
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:phone-bold"></iconify-icon>
+                                        <span class="text_subtitle">{{ Auth::user()->telefono ?: 'Sin dato' }}</span>
+                                        <p></p>
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:letter-bold"></iconify-icon>
+                                        <span class="text_subtitle">{{ Auth::user()->correo ?: 'Sin dato' }}</span>
+                                    </div>
 
+                                    <!-- BOTÓN EDITAR -->
+                                    <a href="{{ route('perfil.edit', Auth::user()->id) }}"
+                                        class="btn btn-primary mt-sm-3">Editar</a>
+                                </div>
+
+
+                                <!-- DATOS LABORALES  -->
+                                <div class="datos_laborales">
+                                    <h1 class="text_title text_title_user">Datos Laborales</h1>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:calendar-bold"></iconify-icon>
+                                        <span class="text_subtitle">Fecha de ingreso: </span>
+                                        <span
+                                            class="text_content">{{ Auth::user()->created_at?->format('Y-m-d') ?: 'Sin dato' }}</span>
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:user-rounded-bold"></iconify-icon>
+                                        <span class="text_subtitle">N. Empleado: </span>
+                                        <span class="text_content">{{ Auth::user()->empleado ?: 'Sin dato' }}</span>
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:buildings-bold"></iconify-icon>
+                                        <span class="text_subtitle">Departamento: </span>
+
+
+                                        <!-- MOSTRAR DEPTO RELACIOANDO AL USUARIO DE LA TABLA DEPTO -->
+                                        <span
+                                            class="text_content">{{ Auth::user()->departamento->name ?? 'Sin departamento' }}</span>
+
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:letter-bold"></iconify-icon>
+                                        <span class="text_subtitle">Correo: </span>
+                                        <span class="text_content">{{ Auth::user()->email ?: 'Sin dato' }}</span>
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user" icon="solar:key-minimalistic-bold"></iconify-icon>
+                                        <span class="text_subtitle">Rol de usuario: </span>
+
+                                        <!-- MOSTRAR ROL DE USUARIO / DE NO EXISTIR MOSTRAR "Sin rol"  -->
+                                        <span
+                                            class="text_content">{{ Auth::user()->getRoleNames()->implode(', ') ?: 'Sin rol' }}
+                                        </span>
+
+                                    </div>
+                                    <div class="dato">
+                                        <iconify-icon class="icon_user"
+                                            icon="solar:settings-minimalistic-bold-duotone"></iconify-icon>
+                                        <span class="text_subtitle">Estatus: </span>
+
+                                        <!-- MOSTRAR STATUS DE USUARIO / DE NO EXISTIR MOSTRAR "Sin rol"  -->
+                                        <span class="text_content">{{ Auth::user()->status ?: 'Sin dato' }}</span>
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </form>
                     </div>
 

@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-//========= Importar controlador Dashboard
+//========= Importar controladores
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\public\PerfilUserController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -21,3 +22,8 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('dashboard', Dashboard::class);
 });
+
+//========= RUTAS PUBLICAS
+
+//========= Rutas Perfil Usuario
+Route::resource('perfil',PerfiluserController::class);

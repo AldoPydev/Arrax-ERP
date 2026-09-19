@@ -108,49 +108,51 @@
 
                                         <!-- ELIMIANR USUARIO -->
                                         <!-- MODAL CON ID DEL UCUARIO -->
-                                        <a href="#" data-bs-toggle="modal"
-                                            data-bs-target="#modalEliminar{{ $user->id }}">
-                                            <iconify-icon class="accion_icon accion_delete"
-                                                icon="solar:trash-bin-2-linear"></iconify-icon>
-                                        </a>
+                                        @role('Administrador')
+                                            <a href="#" data-bs-toggle="modal"
+                                                data-bs-target="#modalEliminar{{ $user->id }}">
+                                                <iconify-icon class="accion_icon accion_delete"
+                                                    icon="solar:trash-bin-2-linear"></iconify-icon>
+                                            </a>
 
-                                        <!-- MODAL DE CONFORMACIÓN -->
-                                        <div class="modal fade" id="modalEliminar{{ $user->id }}" tabindex="-1"
-                                            aria-labelledby="modalEliminarLabel{{ $user->id }}" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
+                                            <!-- MODAL DE CONFORMACIÓN -->
+                                            <div class="modal fade" id="modalEliminar{{ $user->id }}" tabindex="-1"
+                                                aria-labelledby="modalEliminarLabel{{ $user->id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
 
-                                                    <!-- HEADER MODAL -->
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalEliminarLabel{{ $user->id }}">
-                                                            Confirmar Eliminación</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
+                                                        <!-- HEADER MODAL -->
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="modalEliminarLabel{{ $user->id }}">
+                                                                Confirmar Eliminación</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
 
-                                                    <!-- MODAL -->
-                                                    <div class="modal-body text-start">
-                                                        ¿Seguro que deseas eliminar al usario? Esta acción no se
-                                                        puede
-                                                        deshacer.
-                                                    </div>
+                                                        <!-- MODAL -->
+                                                        <div class="modal-body text-start">
+                                                            ¿Seguro que deseas eliminar al usario? Esta acción no se
+                                                            puede
+                                                            deshacer.
+                                                        </div>
 
-                                                    <div class="modal-footer">
-                                                        <!-- CANCELAR MODAL -->
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Cancelar</button>
+                                                        <div class="modal-footer">
+                                                            <!-- CANCELAR MODAL -->
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancelar</button>
 
-                                                        <!-- ELIMIANR USUARIO -->
-                                                        <form action="{{ route('admin.users.destroy', $user->id) }}"
-                                                            method="post" class="d-inline">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-warning">Eliminar</button>
-                                                        </form>
+                                                            <!-- ELIMIANR USUARIO -->
+                                                            <form action="{{ route('admin.users.destroy', $user->id) }}"
+                                                                method="post" class="d-inline">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-warning">Eliminar</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endrole
                                     </div>
                                 </td>
                             </tr>

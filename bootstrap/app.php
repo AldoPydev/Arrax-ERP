@@ -15,11 +15,14 @@ return Application::configure(basePath: dirname(__DIR__))
         
         // RUTAS ADMINISTRACIÓN
         then: function () {
+            //Route::middleware(['web'])
             //Route::middleware(['web', 'auth', 'role:admin']) // Protegidas por sesión y rol
-            Route::middleware(['web']) // Protegidas por sesión y rol
+            Route::middleware(['web', 'auth', 'role:Administrador']) // Protegidas por sesión y rol
                 ->prefix('admin')                            // Todas empiezan con misitio.com/admin/...
                 ->name('admin.')                             // Sus nombres empiezan con admin. (ej. admin.dashboard)
-                ->group(base_path('routes/admin.php'));      // Archivo que contiene las rutas
+                ->group(base_path('routes/admin.php'))      // Archivo que contiene las rutas
+                ->group(base_path('routes/public.php'));      // Archivo que contiene las rutas
+
         },
 
     )

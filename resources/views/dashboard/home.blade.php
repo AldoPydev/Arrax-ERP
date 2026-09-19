@@ -3,12 +3,14 @@
 <!-- DEFINIENDO CONTENIDO DE SECCION -->
 @section('contenido')
     <main class="panel container" id="panel">
-        <div class="card area-1">
-            <a href="#">
-                <img src="{{ asset('iconos-secciones/avisos.png') }}" alt="">
-                <h2 class="title-card">AVISOS</h2>
-            </a>
-        </div>
+        @role('Administrador')
+            <div class="card area-1">
+                <a href="#">
+                    <img src="{{ asset('iconos-secciones/avisos.png') }}" alt="">
+                    <h2 class="title-card">AVISOS</h2>
+                </a>
+            </div>
+        @endrole
         <div class="card area-1">
             <a href="#">
                 <img src="{{ asset('iconos-secciones/biblioteca.png') }}" alt="">

@@ -8,4 +8,4 @@ use App\Http\Controllers\public\PerfilUserController;
 
 
 //========= Rutas Perfil Usuario
-Route::resource('perfilUser',PerfiluserController::class);
+//Route::resource('perfil',PerfiluserController::class);
