@@ -28,6 +28,7 @@ class UpdateUser extends FormRequest
             'correo' => ['required', 'string', 'email', 'max:255'],
             'telefono' => ['required', 'integer', 'digits:10'],
             'profesion' => ['required', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'], // Máximo 2MB
         ];
     }
 }

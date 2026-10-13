@@ -1,5 +1,4 @@
-// ========= ESTILOS INDEX ========= //
-
+// ========= INDEX TABLA ========= //
 .user_container {
     width: 80%;
     margin: auto;
@@ -9,6 +8,7 @@
         color: $boton-color-primario;
     }
 
+    // ========= BUSCADOR TABLA INDEX USER ========= //
     .search_box {
         display: flex;
         justify-content: space-between;
@@ -25,45 +25,150 @@
 }
 
 
-// ========= ESTILOS SHOW USER ========= //
+// ========= CARD DATOS USUARIO ========= //
 
-.form_desing {
-    .form-body {
-        .user_datos {
+.cars_show_user {
+    position: relative;
+    margin: auto;
+    margin-bottom: 50px;
+    width: 600px;
+    background-color: $seccion-bg;
+    border-radius: 12px;
+    border: 8px solid #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
+
+    .card_body {
+        position: relative;
+        width: 100%;
+        z-index: 2;
+
+        // ========= CARD HEADER
+        .card_show_header {
+            height: 10rem;
+            border-radius: $borde-radial;
+            display: flex;
+            align-items: center;
             position: relative;
             width: 100%;
-            display: flex;
-            padding: 20px;
-            margin: 50px 0px 50px 0px;
-            z-index: 3;
 
-            .datos_personales,
-            .datos_laborales {
-                width: 50%;
-                display: flex;
-                flex-direction: column;
-                padding: 10px;
+            .icon-back {
+                position: absolute;
+                color: $boton-color-primario;
+                font-size: 40px;
+                margin: -70px;
+                margin-left: 10px;
+                cursor: pointer;
+                z-index: 2;
+            }
 
-                .text_title_user {
-                    margin: 0px 0px 20px 30px;
+            .bg-header {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+                z-index: 1;
+            }
 
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        margin-left: -9px;
-                        height: 25px;
-                        width: 5px;
-                        background-color: $icono-color-primario;
-                        border-radius: $borde-radial;
-                    }
-                }
 
-                .btn {
-                    width: 30%;
+            .logo-arrax {
+                position: absolute;
+                right: 25px;
+                width: 80px;
+                justify-content: end;
+                z-index: 2;
+            }
+
+            .text_title {
+                position: absolute;
+                color: $boton-color-primario;
+                margin-left: 30px;
+                margin-top: 20px;
+                z-index: 2;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 3px;
+                    width: 35px;
+                    background-color: $boton-color-primario;
+                    border-radius: $borde-radial;
                 }
             }
 
+        }
+
+        // ========= FOTO PERFIL
+        .perfil-user {
+            width: 100%;
+            height: 85px;
+
+            .foto-user {
+                position: absolute;
+                top: 5rem;
+                left: 2rem;
+                width: 10rem;
+                height: 10rem;
+                border-radius: 100%;
+                border: 0.5rem solid #fff;
+                object-fit: cover;
+                z-index: 3;
+            }
+        }
+
+        .show_container_user {
+            display: flex;
+            width: 100%;
+            padding: 10px;
+            margin: auto;
+
+            // ========= DATOS PERSONALES
+            .datos_personales {
+                width: 50%;
+
+                .user_datos {
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    padding: 0px 20px 20px 20px;
+                    z-index: 3;
+
+                    .datos_personales,
+                    .datos_laborales {
+                        width: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 10px;
+
+                        .text_title_user {
+                            margin: 0px 0px 20px 30px;
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                margin-left: -9px;
+                                height: 25px;
+                                width: 5px;
+                                background-color: $icono-color-primario;
+                                border-radius: $borde-radial;
+                            }
+                        }
+
+                        .btn {
+                            width: 30%;
+                        }
+                    }
+                }
+            }
+
+            // ========= DATOS LABORALES
             .datos_laborales {
+                width: 50%;
+                padding-left: 15px;
+
                 border-left: 3px solid #dadedf;
             }
 
@@ -78,35 +183,306 @@
                     color: $icono-color-primario;
                 }
 
+                .text_subtitle {
+                    font-weight: 600;
+                }
+
                 .text_subtitle,
                 .text_content {
                     color: $texto-titulo-2;
                 }
-
-
 
             }
         }
     }
 }
 
-// ========= FORMULARIO CREAR USUARIO ========= //
+// ========= FORM CREAR / EDITAR USUARIO ========= //
 
-// ========= FORMULARIO EDITAR USUARIO ========= //
+.form_desing {
+    position: relative;
+    margin: auto;
+    margin-bottom: 50px;
+    width: 765px;
+    background-color: $seccion-bg;
+    border-radius: 12px;
+    border: 8px solid #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    overflow: hidden;
 
-.form_user_edit,
-.form_user_create {
-    margin-top: 70px;
 
-    .user_content {
-        display: flex;
-        gap: 10px;
-        width: 100%;
-        justify-content: center;
+    .form_user_edit,
+    .form_user_create {
 
-        .form-indicacion {
-            font-size: 10px;
-            color: $texto-subtitulo-2;
+        .form-body {
+
+            position: relative;
+            z-index: 2;
+            width: 100%;
+
+            // ========= HEADER
+            .form-header {
+                height: 10rem;
+                border-radius: $borde-radial;
+                display: flex;
+                align-items: center;
+                position: relative;
+                width: 100%;
+
+                .icon-back {
+                    position: absolute;
+                    color: $boton-color-primario;
+                    font-size: 40px;
+                    margin: -70px;
+                    margin-left: 10px;
+                    cursor: pointer;
+                    z-index: 2;
+                }
+
+                .bg-header {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    z-index: 1;
+                }
+
+
+                .logo-arrax {
+                    position: absolute;
+                    right: 25px;
+                    width: 80px;
+                    justify-content: end;
+                    z-index: 2;
+                }
+
+                .text_title {
+                    position: absolute;
+                    color: $boton-color-primario;
+                    margin-left: 30px;
+                    margin-top: 20px;
+                    z-index: 2;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        height: 3px;
+                        width: 35px;
+                        background-color: $boton-color-primario;
+                        border-radius: $borde-radial;
+                    }
+                }
+
+            }
+
+            // ========= FOTO PERFIL
+            .perfil-user {
+                display: flex;
+                width: 100%;
+                height: 100px;
+
+                .user-seccion {
+                    width: 50%;
+
+                    .foto-user {
+                        position: absolute;
+                        top: 5rem;
+                        left: 2rem;
+                        width: 10rem;
+                        height: 10rem;
+                        border-radius: 100%;
+                        border: 0.5rem solid #fff;
+                        object-fit: cover;
+                        z-index: 3;
+                    }
+
+                    .perfil-avatar {
+                        position: absolute;
+                        background-color: white;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        padding: 5px;
+                        margin-top: 30px;
+                        margin-left: 155px;
+                        cursor: pointer;
+                        z-index: 3;
+
+                        .icon-edit-perfil {
+                            color: $enlace-color-inactivo;
+                            font-size: 20px;
+                            cursor: pointer;
+                            z-index: 3;
+                        }
+                    }
+                }
+
+                .alert-seccion {
+                    width: 100%;
+
+                    .alert-success {
+                        width: 100%;
+                    }
+                }
+            }
+
+            // ========= SUBTITULO
+            .sub_text {
+                margin-left: 24px;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    margin-left: -9px;
+                    height: 25px;
+                    width: 5px;
+                    background-color: $icono-color-primario;
+                    border-radius: $borde-radial;
+                }
+            }
+
+            // ========= TEXT INFO
+            .form-indicacion {
+                font-size: 10PX;
+            }
+
+            // ========= CONTENIDO
+            .user_content {
+
+                display: flex;
+                width: 100%;
+                padding: 10px;
+                gap: 20px;
+
+                .user_item {
+                    width: 50%;
+
+                    label {
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+
+            // ========= DEPTO SECCION
+            .depto_content {
+                width: 97%;
+                margin: auto;
+
+                .input-depto {
+                    width: 49%;
+                }
+
+            }
+
+            // ========= ROL SECCION
+            .form-group {
+                margin-top: 20px;
+
+                .input-form {
+                    height: 48px;
+                    padding-inline: 14px;
+                    border-radius: $borde-radial;
+                    border: $borde-lineal;
+                    width: 100%;
+                    outline: none;
+                    background-color: transparent;
+                    font-family: $font-family-base;
+                    font-size: $texto-size-contenido;
+                    color: $body-color;
+                }
+
+                .permissions-box {
+                    width: 95%;
+                    margin: auto;
+                    border: $borde-lineal;
+                    border-radius: $borde-radial;
+                    padding: 10px;
+
+
+                    .checkbox-grid {
+                        width: 95%;
+                        margin: auto;
+                        display: grid;
+                        /* Crea 3 columnas de fracción igual  */
+                        grid-template-columns: repeat(3, 1fr);
+                        /* Espaciado entre elementos */
+                        row-gap: 12px;
+                        /* Espacio vertical entre filas */
+                        column-gap: 20px;
+                    }
+
+                }
+
+            }
+
+            // ========= BOTONES
+            .botones {
+                height: 50px;
+                padding: 15px;
+
+                .form-bottons {
+                    position: relative;
+                    z-index: 3;
+                    display: flex;
+                    justify-content: end;
+                    gap: 10px;
+                }
+            }
+
+
         }
     }
+
+
+}
+
+
+// ========= FORM CREAR  ========= //
+
+.form_desing {
+
+    .form_user_create {
+
+        .form-body {
+
+            // ========= HEADER
+            .form-header {
+
+                .text_title {
+                    position: absolute;
+                    color: $boton-color-primario;
+                    margin-left: 30px;
+                    margin-top: 20px;
+                    z-index: 2;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        height: 3px;
+                        width: 35px;
+                        background-color: $boton-color-primario;
+                        border-radius: $borde-radial;
+                    }
+                }
+
+            }
+
+            // ========= DEPTO SECCION
+            .user_content {
+
+                .user_item {
+                    .input-depto {
+                        width: 98%;
+                    }
+                }
+            }
+        }
+    }
+
+
 }

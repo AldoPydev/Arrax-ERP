@@ -31,6 +31,7 @@ class UpdateAdmin extends FormRequest
             'correo' => 'nullable|string|email|max:255', 
             'telefono' => 'required|integer',
             'profesion' => 'nullable|string|max:255',
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'], // Máximo 2MB      
             'empleado' => 'required|integer|unique:users,empleado,' . $user->id,
             'status' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,

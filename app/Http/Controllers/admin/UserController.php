@@ -17,6 +17,8 @@ use Spatie\Permission\Models\Role;
 //======= IMPORTAR REGLAS DE VALIDACIÓN FORM UPDATE ADMIN 
 use App\Http\Requests\UpdateAdmin;
 
+//======= IMPORTAR LOCAL STORAGE
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -143,7 +145,9 @@ class UserController extends Controller
         $user->email = $data['email'];
 
         //====== GUARDAR EL DEPARTAMENTO
-            $user->departamento_id = $data['departamento_id'];
+            if ($request->filled('departamento_id')) {
+    $user->departamento_id = $request->input('departamento_id');
+}
         
 
         //====== VERIFICAR SI INTRODUCE UN NUEVO PASSWORD / ENCRIPTAR
@@ -154,6 +158,25 @@ class UserController extends Controller
 
         //====== ACTUALIZAR ROL DE USUARIO
         $user->roles()->sync($request->input('roles', []));
+
+         // ====== GUARDAR LA FOTO DE PERFIL
+        if ($request->hasFile('image')) {
+
+            // OBTENER FOTO ANTERIOR 
+            $oldImage = $user->getOriginal('image_path') ?? $user->image_path;
+
+            //====== GUARDAR FOTO EN storage/app/public/perfil
+            $path = $request->file('image')->store('perfil', 'public');
+
+            // OBTENER LA URL 
+            $user->image_path = $path;
+
+            // ELIMINAR FOTO ANTERIOR PARA GUARDAR LA NUEVA 
+            if ($oldImage && Storage::disk('public')->exists($oldImage)) {
+                Storage::disk('public')->delete($oldImage);
+            }
+        }
+
 
         //====== GUARDAR CAMBIOS
         $user->save();

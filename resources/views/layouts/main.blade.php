@@ -93,7 +93,8 @@
                     <a href="#" class="dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <div class="contenedor-perfil">
-                            <iconify-icon class="barra-icon perfil-icon" icon="solar:user-linear"></iconify-icon>
+                            <img class="foto-user"
+                                src="{{ Auth::user()->image_path ? Storage::url(Auth::user()->image_path) : asset('images/user.png') }}">
                         </div>
                         <span class="nav-link">{{ Auth::user()->name }}</span>
                         <iconify-icon class="barra-icon dropdown__arrow"
@@ -139,15 +140,6 @@
             </button>
         </div>
     </nav>
-
-    <!--=============== MAIN ===============-->
-
-    <!-- MENSAJES DE ACCIONES CREADO -->
-    @if (session('success'))
-        <div class="alert alert-success fade show" id="alerta-success">
-            {{ session('success') }}
-        </div>
-    @endif
 
 
     <!--=============== CONTENT ===============-->

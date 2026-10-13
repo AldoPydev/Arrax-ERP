@@ -69,9 +69,11 @@
             border-radius: 50%;
         }
 
-        .perfil-icon {
-            font-size: 24px;
-            color: rgba(116, 150, 248, 0.8);
+        img {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
         }
 
         .perfil-user {

@@ -65,7 +65,13 @@
                         @forelse ($users as $user)
                             <tr>
                                 <td class="text-center">{{ $user->empleado }}</td>
-                                <td class="text-start">{{ $user->name }}</td>
+                                <td class="text-start user-p-n">
+                                    <div class="contenedor-perfil">
+                                        <img class="perfil-user"
+                                            src="{{ $user->image_path ? Storage::url($user->image_path) : asset('images/user.png') }}">
+                                    </div>
+                                    {{ $user->name }}
+                                </td>
                                 <td class="text-start">{{ $user->email }}</td>
                                 <td class="text-start">{{ $user->departamento->name ?? 'Sin departamento' }}</td>
 

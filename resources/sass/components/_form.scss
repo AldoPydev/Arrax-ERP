@@ -1,6 +1,4 @@
 //============  BASE DE FORMULARIO
-
-
 .form_desing {
     position: relative;
     margin: auto;
@@ -12,90 +10,139 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     overflow: hidden;
 
+    form {
+        padding: 5px;
 
-    // HEADER
-    .form-header {
-        height: 10rem;
-        border-radius: $borde-radial;
-        display: flex;
-        align-items: center;
-        position: relative;
-        width: 100%;
-
-        .icon-back {
-            position: absolute;
-            color: $boton-color-primario;
-            font-size: 40px;
-            margin: -70px;
-            margin-left: 10px;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-
-        .bg-header {
+        .form-body {
             position: relative;
+            z-index: 2;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-            z-index: 1;
-        }
 
-        .perfil-user {
-            position: absolute;
-            top: 5rem;
-            left: 2rem;
-            width: 10rem;
-            height: 10rem;
-            border-radius: 100%;
-            border: 0.5rem solid #fff;
-            z-index: 3;
-        }
-
-        .logo-arrax {
-            position: absolute;
-            right: 25px;
-            width: 80px;
-            justify-content: end;
-            z-index: 2;
-        }
-
-        .text_title {
-            position: absolute;
-            color: $boton-color-primario;
-            margin-left: 30px;
-            margin-top: 20px;
-            z-index: 2;
-
-            &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                height: 3px;
-                width: 35px;
-                background-color: $boton-color-primario;
+            // ========= HEADER
+            .form-header {
+                height: 10rem;
                 border-radius: $borde-radial;
-            }
-        }
+                display: flex;
+                align-items: center;
+                position: relative;
+                width: 100%;
 
-    }
+                .icon-back {
+                    position: absolute;
+                    color: $boton-color-primario;
+                    font-size: 40px;
+                    margin: -70px;
+                    margin-left: 10px;
+                    cursor: pointer;
+                    z-index: 2;
+                }
 
-    .form-body {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-
-        form {
-            padding: 20px;
-
-            .user_content {
-                .select_dept {
+                .bg-header {
+                    position: relative;
                     width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    z-index: 1;
+                }
+
+
+                .logo-arrax {
+                    position: absolute;
+                    right: 25px;
+                    width: 80px;
+                    justify-content: end;
+                    z-index: 2;
+                }
+
+                .text_title {
+                    position: absolute;
+                    color: $boton-color-primario;
+                    margin-left: 30px;
+                    margin-top: 20px;
+                    z-index: 2;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        height: 3px;
+                        width: 35px;
+                        background-color: $boton-color-primario;
+                        border-radius: $borde-radial;
+                    }
                 }
 
             }
+
+            // ========= FOTO PERFIL
+
+            .perfil-user {
+                width: 100%;
+                height: 100px;
+
+                .foto-user {
+                    position: absolute;
+                    top: 5rem;
+                    left: 2rem;
+                    width: 10rem;
+                    height: 10rem;
+                    border-radius: 100%;
+                    border: 0.5rem solid #fff;
+                    object-fit: cover;
+                    z-index: 3;
+                }
+
+                .perfil-avatar {
+                    position: absolute;
+                    background-color: white;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    padding: 5px;
+                    margin-top: 30px;
+                    margin-left: 155px;
+                    cursor: pointer;
+                    z-index: 3;
+
+                    .icon-edit-perfil {
+                        color: $enlace-color-inactivo;
+                        font-size: 20px;
+                        cursor: pointer;
+                        z-index: 3;
+                    }
+                }
+            }
+
+
+            // ========= SUBTITULOS
+            .sub_text {
+                margin-left: 24px;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    margin-left: -9px;
+                    height: 25px;
+                    width: 5px;
+                    background-color: $icono-color-primario;
+                    border-radius: $borde-radial;
+                }
+            }
+
+            // ========= DEPARTAMENTO SECCION
+            .depto_content {
+
+                margin-left: 45PX;
+
+                .input-depto {
+                    width: 46%;
+                }
+
+            }
+
+            // ========= ROL SECCION
 
             .form-group {
                 margin-top: 20px;
@@ -134,53 +181,44 @@
 
             }
 
-            .form-bottons {
-                position: relative;
-                z-index: 3;
-                display: flex;
-                justify-content: end;
-                gap: 10px;
+            // ========= BOTONES
+            .botones {
+                height: 50px;
+                padding: 15px;
+
+                .form-bottons {
+                    position: relative;
+                    z-index: 3;
+                    display: flex;
+                    justify-content: end;
+                    gap: 10px;
+                }
+
+                // ========= WAVES
+                .waves {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100px;
+                    z-index: 1;
+                    pointer-events: none;
+
+                    .wave-svg {
+                        position: absolute;
+                        bottom: -1px;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                    }
+
+                }
+
             }
-        }
 
 
-    }
-
-
-
-    .sub_text {
-        margin-left: 10px;
-
-        &::before {
-            content: '';
-            position: absolute;
-            margin-left: -9px;
-            height: 25px;
-            width: 5px;
-            background-color: $icono-color-primario;
-            border-radius: $borde-radial;
         }
     }
-
-    .waves {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        z-index: 1;
-        pointer-events: none;
-
-        .wave-svg {
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-    }
-
 
 }

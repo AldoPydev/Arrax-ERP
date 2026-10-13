@@ -35,9 +35,31 @@
     tbody {
 
         tr {
+            vertical-align: middle;
+            padding: 8px 12px;
+
+            .user-p-n {
+                min-height: 72px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .contenedor-perfil {
+                    width: 40px;
+                    height: 40px;
+
+                    .perfil-user {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
 
             .status {
-                min-height: 55px;
+                min-height: 56px;
                 display: flex;
                 align-items: center;
                 gap: 5px;
@@ -74,11 +96,6 @@
             }
 
         }
-
-
-
-
-
 
     }
 

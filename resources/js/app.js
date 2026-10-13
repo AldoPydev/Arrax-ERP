@@ -42,3 +42,16 @@ document.addEventListener('DOMContentLoaded', function () {
       checkbox.checked = masterCheckbox.checked;
     });
   });
+
+  //=========== PREVISUALIZAR IMAGEN ANTES DE GUARDAR
+
+function previewImage(event, selectorImg) {
+    const input = event.target;
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.querySelector(selectorImg).src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
